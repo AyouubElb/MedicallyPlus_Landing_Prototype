@@ -149,10 +149,11 @@ export default function FormSidebar({ isOpen, onClose }: CartSidebarProps) {
       if (raw) {
         const payload = JSON.parse(raw);
         // simple safety check
-        /*if (payload && payload.values) {
-          const shouldRestore = window.confirm(
+        if (payload && payload.values) {
+          /*const shouldRestore = window.confirm(
             "We found a saved questionnaire. Restore progress?"
-          );
+          );*/
+          const shouldRestore = true;
           if (shouldRestore && isMounted) {
             methods.reset(payload.values); // restore values
             // restore currentStep if saved, otherwise 0
@@ -160,7 +161,7 @@ export default function FormSidebar({ isOpen, onClose }: CartSidebarProps) {
               setCurrentStep(payload.currentStep);
             }
           }
-        }*/
+        }
       }
     } catch (e) {
       console.warn("Failed to parse saved progress", e);
